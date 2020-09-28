@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            let ids = $('[type = "checkbox"]').map((idx,val) => {
+                return val.id;
+            }).get().join('-');//join은 배열의 값을 문자열로 연결해준다!
+
+            let chkboxes = $.grep($('input:checkbox'),(val,idx) => {//grep이 필터 역할
+                return (idx>0)? val : null;
+            })
+            console.log(chkboxes);
+        })
+    </script>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label for="one">One</label>
+            <input type="checkbox" id="one">
+        </div>
+        <div>
+            <label for="two">Two</label>
+            <input type="checkbox" id="two">
+        </div>
+        <div>
+            <label for="three">Three</label>
+            <input type="checkbox" id="three">
+        </div>
+
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "..\\webprog"
+		},
+		{
+			"path": "..\\jScript"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "jScript"
+	}
+}
