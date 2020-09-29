@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(() => {
+            let srcVal = $('img').eq(0).attr('src');
+
+            $('img').hover(function () { //마우스 올라갈 때 이벤트
+                $('img').attr({
+                    'width': '200px',
+                    'src': srcVal.replace('images/daum.jpg', 'images/google.png'),
+                    'alt': '구글'
+                }).css('border', '3px dotted red');
+            }, function () { //마우스 내려갈 때 이벤트
+                $('img').attr({
+                    'width': '200px',
+                    'src': srcVal,
+                    'alt': '구글'
+                }).css('border', '3px dotted blue');
+            })
+        });
+    </script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <h1><strong>객체 조작 및 생성</strong></h1>
+    <section id="sec_1">
+        <h2>이미지 속성</h2>
+        <p><img src="images/daum.jpg" alt="다음"></p>
+    </section>
+</body>
+
+</html>

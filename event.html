@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(() => {
+            let hello = $('<button />').html('Hello');
+            $('body').append(hello);
+
+            $('button').click(function (event) {
+                console.log('클릭되었습니다.', event.currentTarget);
+                alert('자동실행되었습니다');
+            });
+
+            //새로고침 할 떄 바로 실행시키기
+            // $('button').click();
+            // $('button').trigger('click');
+            $('button').off('click');
+
+            $('button').mouseover(function () {
+                $(this).css('background', 'yellow');
+            })
+
+            $('button').on({
+                'mouseout': function () {
+                    $(this).css('background', '')
+                },
+                'dblclick': function () {
+                    window.alert('더블 클릭');
+                }
+            })
+
+            $('#iv').on({
+                'keydown': function (e) {
+                    if (e.keyCode == 13) {
+                        let ipv = $(this).val();
+                        $('#result').append($('<div />').addClass(ipv).html(ipv));
+                        $(this).val("");
+                    }
+                },
+                'focus': function() {
+                    $(this).css('background', 'yellow');
+                },
+                'blur':function() {
+                    $(this).css('background', '');
+                }
+            })
+
+            $('#iv2').on({
+                'keydown': function (e) {
+                    if (e.keyCode == 13) {
+                        let v1 = $(this).val();
+                        // $('#result :contains(' + v1 + ')').css('display', 'none'); //한 글자라도 포함되면 
+                        $('#result').find($('.' + v1)).css('display', 'none');//정확히 일치하면
+                        $(this).val("");
+                    }
+                },
+                'focus': function() {
+                    $(this).css('background', 'yellow');
+                },
+                'blur':function() {
+                    $(this).css('background', '');
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    값:<input id="iv" type="text">
+    <input id="iv2" type="text">
+    <p id="result"></p>
+</body>
+
+</html>

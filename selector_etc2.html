@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doscument</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        let jq = $.noConflict(); //jq기호를 바꾸기
+        jq(() => {
+            jq('#inner_1').find(jq(':contains("내용1")')).css('background', 'yellow');
+
+            jq('#inner_1 p').filter(jq('.txt2')).css('background', 'aqua');
+
+            jq('#inner_2 p').filter(function (idx, val) {
+                // return idx%2 === 0; //짝수만
+                // return jq(val).html() == 'index 1'; //index 1인 애들만(html로)
+                // return jq(val).text() == 'index 1'; //index 1인 애들만(text로)
+                return 1; //전부다 true
+            }).css('background', 'yellow');
+
+            jq('#outer').append(jq('<p/>').html("hello").css('color', 'red'));
+        })
+    </script>
+</head>
+
+<body>
+    <div id="outer">
+        <h1>콘텐츠 탐색 선택자</h1>
+        <section id="inner_1">
+            <h2>find(), filter()</h2>
+            <div>div입니다
+                <p class="txt1">내용1</p>
+            </div>
+            <p class="txt2">내용2</p>
+        </section>
+        <section id="inner_2">
+            <h2>filter(function)</h2>
+            <p>index 0</p>
+            <p>index 1</p>
+            <p>index 2</p>
+            <p>index 3</p>
+        </section>
+    </div>
+</body>
+
+</html>
